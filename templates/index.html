@@ -1,0 +1,160 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>D_Spider</title>
+</head>
+<body>
+  <nav class="navbar navbar-toggleable navbar-inverse bg-inverse fixed-top">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a href="#" class="navbar-brand">D Spider</a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a href="#" class="navbar-brand">Hey, {{user.username}}</a>
+            </li>
+            <li class="nav-item">
+                <form action="logout">
+                    <input class="btn btn-outline-secondary btn-block" type="submit" value="Log Out">
+                </form>
+            </li>
+            {% else %}
+            
+            {% endif %}
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  {% if user.is_authenticated %}
+  <!-- HOME SECTION -->
+  <header id="home-section">
+    <div class="dark-overlay">
+      <div class="home-inner">
+        <div class="container">
+          <div class="row">
+   
+
+            {% block content %}
+            </div>
+            <div class="col">
+              <div class="card card-primary card-form text-center">
+                <div class="card-block">
+                  <h3>Enter URL</h3>
+                  <p>Please, give full URL of a website</p>
+                  
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Enter URL</label>
+                        
+                        <form action="crawler">
+                        <input type="text" class="form-control" placeholder="Enter URL" name="url">
+                      </div>
+                      
+                    <input value="Find" class="btn btn-outline-secondary btn-block" type="submit">
+                </form>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  {% endblock %}
+  {% else %}
+
+  <!-- HOME SECTION -->
+  <header id="home-section">
+    <div class="dark-overlay">
+      <div class="home-inner">
+        <div class="container">
+          <div class="row">
+   
+            <div class="col-md-8 d-none d-md-block">
+              <h1 class="display-4">Find <strong>All Urls</strong> and Gain very Important <atrong>Information</strong></h1>
+                <div class="d-flex flex-row">
+                  <div class="p-4 align-self-start">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="p-4 align-self-end">
+                    Find some useful information
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row">
+                  <div class="p-4 align-self-start">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="p-4 align-self-end">
+                    It can be useful for Reconnaissance
+                  </div>
+                </div>
+
+                
+            </div>
+            <div class="col-md-4">
+              <div class="card card-primary card-form text-center">
+                <div class="card-block">
+                  <h3>Sign Up Today</h3>
+                  <p>Please fill out this form to register</p>
+    
+                    <br><br>
+                    <form action="register"><input type="submit" value="Sign Up" class="btn btn-outline-secondary btn-block"></form>
+                    <br><br>
+                    <form action="login"><input type="submit" value="Log In" class="btn btn-outline-secondary btn-block"></form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  {% endif %}
+
+
+
+
+
+
+ <!-- MAIN FOOTER -->
+ <footer id="main-footer" class="bg-inverse">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <div class="py-4">
+            <h1 class="h3">Dharmik Patel</h1>
+            <p>Copyright &copy; 2020</p>
+            <form target="_blank" action="https://github.com/DHARMIKR"><button type="submit" class="btn btn-outline-secondary"><i class="fab fa-github"></i> Github</button>      </form>    </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static '/tether.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="https://kit.fontawesome.com/70f88bdd1a.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

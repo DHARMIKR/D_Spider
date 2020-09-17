@@ -1,0 +1,107 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>D_Spider</title>
+</head>
+<body>
+  <nav class="navbar navbar-toggleable navbar-inverse bg-inverse fixed-top">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a href="#" class="navbar-brand">D Spider</a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+
+            
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- HOME SECTION -->
+  <header id="home-section">
+    <div class="dark-overlay">
+      <div class="home-inner">
+        <div class="container">
+          <div class="row">
+   
+
+            
+            </div>
+            <div class="col">
+              <div class="card card-primary card-form text-center">
+                <div class="card-block">
+                  <h3>Log In</h3>
+                  <br>
+                  
+                    <div class="form-group">
+                        
+                        <form action="login" method="post">
+                            {% csrf_token %}
+                            <input class="form-control" type="text" name="username" placeholder="username"><br>
+                            <input class="form-control" type="password" name="password" placeholder="password"><br>
+                    </div>
+                      
+                    <input value="Log In" type="submit" class="btn btn-outline-secondary btn-block">
+                </form>
+                <br>
+                <div>
+                    {% for message in messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {{message}}
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  
+
+
+
+
+
+
+  <!-- MAIN FOOTER -->
+  <footer id="main-footer" class="bg-inverse">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <div class="py-4">
+            <h1 class="h3">Dharmik Patel</h1>
+            <p>Copyright &copy; 2020</p>
+            <form target="_blank" action="https://github.com/DHARMIKR"><button type="submit" class="btn btn-outline-secondary"><i class="fab fa-github"></i> Github</button>      </form>    </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static '/tether.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="https://kit.fontawesome.com/70f88bdd1a.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
